@@ -14,10 +14,10 @@ export const useLogin = () => {
 
     // sign the user in
     try {
-      await projectAuth.signInWithEmailAndPassword(email, password);
+      const res = await projectAuth.signInWithEmailAndPassword(email, password);
 
       // dispatch the login action
-      dispatch({ type: 'LOGIN' });
+      dispatch({ type: 'LOGIN', payload: res.user });
 
       // update state
       if (!isCancelled) {
